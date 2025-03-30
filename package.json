@@ -1,0 +1,67 @@
+{
+  "name": "@universal-packages/authentication-apple-module",
+  "version": "0.0.0",
+  "description": "Universal authentication apple module",
+  "author": "David De Anda <david@universal-packages.com> (https://github.com/universal-packages)",
+  "license": "MIT",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "repository": "git@github.com:universal-packages/universal-authentication-apple-module.git",
+  "scripts": {
+    "build": "tsc --p tsconfig.dis.json",
+    "test": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:clear": "jest --clearCache",
+    "format": "prettier --write \"./{src,tests}/**/*.{ts,tsx,js,jsx,json}\"",
+    "update-universal-dependencies": "umaintenance update-universal-dependencies"
+  },
+  "peerDependencies": {
+    "@universal-packages/authentication": "^1.14.0"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^18.11.9",
+    "@universal-packages/dynamic-api-jest": "^1.2.4",
+    "@universal-packages/maintenance": "^1.7.4",
+    "jest": "^29.7.0",
+    "prettier": "^3.4.1",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.2"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ],
+    "setupFilesAfterEnv": [
+      "@universal-packages/dynamic-api-jest",
+      "<rootDir>/tests/setup.ts"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 180,
+    "trailingComma": "none",
+    "plugins": [
+      "@trivago/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+      "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "importOrderParserPlugins": [
+      "typescript",
+      "jsx",
+      "classProperties",
+      "decorators-legacy"
+    ]
+  },
+  "dependencies": {
+    "@universal-packages/fs-utils": "^1.2.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
