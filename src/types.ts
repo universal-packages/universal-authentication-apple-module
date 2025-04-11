@@ -1,4 +1,4 @@
-import { AuthDynamicNames, AuthenticationResult, UserPayload } from '@universal-packages/authentication'
+import { AuthDynamicNames, AuthenticationResult, UserPayload, ValidationResult } from '@universal-packages/authentication'
 
 export interface AppleModuleOptions {
   p8CertificateLocation?: string
@@ -9,21 +9,26 @@ export interface AppleModuleOptions {
 }
 
 export interface AppleModuleDynamicNames<U = Record<string, any>> extends AuthDynamicNames<U> {
-  'sign-in-with-apple': { payload: CodePayload; result: AuthenticationResult }
-  'find-or-create-user-by-apple-id': { payload: AppleIdEmailPayload; result: U }
+  'sign-in-with-apple': { payload: CodeAndInitialDetailsPayload; result: AuthenticationResult }
+  'find-or-create-user-by-apple-id': { payload: AppleIdEmailAndInitialDetailsPayload; result: U }
   'after-sign-in-with-apple-success': { payload: UserPayload<U>; result: void }
-  'after-sign-in-with-apple-failure': { payload: MessagePayload; result: void }
+  'after-sign-in-with-apple-failure': { payload: MessageValidationPayload; result: void }
 }
 
-export interface CodePayload {
+export interface CodeAndInitialDetailsPayload {
   code: string
+  locale?: string
+  timezone?: string
 }
 
-export interface AppleIdEmailPayload {
+export interface AppleIdEmailAndInitialDetailsPayload {
   appleId: string
   email: string
+  locale?: string
+  timezone?: string
 }
 
-export interface MessagePayload {
+export interface MessageValidationPayload {
   message: string
+  validation?: ValidationResult
 }

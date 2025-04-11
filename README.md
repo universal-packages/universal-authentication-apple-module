@@ -72,6 +72,8 @@ Logic to find or create a user by apple id or email.
 - **`PAYLOAD`** `Object`
   - **`appleId`** `String`
   - **`email`** `String`
+  - **`locale`** `String`
+  - **`timezone`** `String`
 - **`RESULT`** `User`
 
 ## Not override required dynamics
